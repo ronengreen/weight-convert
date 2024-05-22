@@ -100,16 +100,86 @@
 	}
 </script>
 
+
+<style>
+  main {
+    padding: 1em;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form label, form input, form select, form button {
+    margin-bottom: 1em;
+  }
+
+  @media (min-width: 600px) {
+    form {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    form label, form input, form select, form button {
+      margin-bottom: 0;
+    }
+  }
+	section {
+		margin-top: 2em;
+	}
+
+	section h2 {
+		margin-bottom: 1em;
+	}
+	section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  section ul li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  section ul li:last-child {
+    border-bottom: none;
+  }
+
+  section ul li strong {
+    color: #333;
+  }
+
+  input, select {
+    font-size: 1em; /* Adjust size as needed */
+    padding: 0.2em; /* Adjust padding as needed */
+  }
+	.converted-text {
+    color: #008000; /* Adjust color as needed */
+  }
+	
+</style>
+
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+  <title>Weight Converter</title>
+  <meta name="description" content="Convert weight units like pounds, kilograms, ounces, and more with our online weight converter.">
+  <meta name="keywords" content="weight, converter, conversion, pounds, kilograms, ounces, metric, imperial, weight conversion, online converter, weight calculator, unit conversion">
+  <!-- Add more meta tags here -->
 </svelte:head>
 
-<h1>Weight Conversion Calculator</h1>
-<form>
+<main>
+
+	<h1>Weight Conversion Calculator</h1>
+ <p>Convert weight units like pounds, kilograms, ounces, and more with our online weight converter.</p>
+
+ 
+
 	<label for="weight">Enter weight:</label>
-	<input bind:value={inputValue} type="number" id="weight" name="weight" required />
-	<select id="unit" name="unit" bind:value={selectedUnitValueIn}>
+	<input bind:value={inputValue} type="number" id="weight" name="weight" required on:input={convertWeight}  />
+	<select id="unit" name="unit" bind:value={selectedUnitValueIn}  on:change={convertWeight} >
 		<option value="lb">Pounds (lb)</option>
 		<option value="mt">Metric Ton (mt)</option>
 		<option value="ST">Short Ton (ST)</option>
@@ -118,7 +188,7 @@
 		<option value="µg">Micrograms (µg)</option>
 		<option value="kg">Kilograms (kg)</option>
 	</select>
-	<select id="unit" name="unit" bind:value={selectedUnitValueOut}>
+	<select id="unit" name="unit" bind:value={selectedUnitValueOut}  on:change={convertWeight}>
 		<option value="lb">Pounds (lb)</option>
 		<option value="mt">Metric Ton (mt)</option>
 		<option value="ST">Short Ton (ST)</option>
@@ -127,8 +197,25 @@
 		<option value="µg">Micrograms (µg)</option>
 		<option value="kg">Kilograms (kg)</option>
 	</select>
-	<button on:click={convertWeight}>Convert</button>
-</form>
-<p id="result">
+	
+
+
+<p  class="converted-text" >
 	{convertedWeightText}
 </p>
+
+<section>
+  <h2>Conversion Rates from Pounds</h2>
+  <ul>
+    <li><strong>Pounds (lb):</strong> 1 lb is equal to 1 lb.</li>
+    <li><strong>Metric Ton (mt):</strong> 1 lb is approximately equal to 0.000453592 mt.</li>
+    <li><strong>Short Ton (ST):</strong> 1 lb is approximately equal to 0.0005 ST.</li>
+    <li><strong>Long Tons (LT):</strong> 1 lb is approximately equal to 0.000446429 LT.</li>
+    <li><strong>Ounces (oz):</strong> 1 lb is equal to 16 oz.</li>
+    <li><strong>Micrograms (µg):</strong> 1 lb is approximately equal to 453592370 µg.</li>
+    <li><strong>Kilograms (kg):</strong> 1 lb is approximately equal to 0.453592 kg.</li>
+  </ul>
+</section>
+
+
+</main>
