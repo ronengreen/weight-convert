@@ -13,7 +13,7 @@
 
 <div>
     <header>
-        <img src="/logo.webp" alt="Fuel Efficiency Conversion Logo" class="logo">
+        <img src="/static/logo.png" alt="Fuel Efficiency Conversion Logo" class="logo">
         <h1>Fuel Efficiency Conversion Calculators</h1>
         <p>Convert MPG to Liters, Km/L, and more with in-depth explanations</p>
     </header>
@@ -86,7 +86,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Convert-calc Conversions. All Rights Reserved.</p>
+        <p>&copy; 2024 Fuel Efficiency Conversions. All Rights Reserved.</p>
     </footer>
 
     
